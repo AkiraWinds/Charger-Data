@@ -1,7 +1,18 @@
 export function fetchData() {
-  return fetch("multi_chart_data.json")
-    .then((response) => response.json())
-    .catch((error) => console.error("Error loading JSON data:", error));
+  return fetch("./multi_chart_data.json")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log("Loaded data:", data);
+      return data;
+    })
+    .catch((error) => {
+      console.error("Error loading JSON data:", error);
+    });
 }
 
 //  Chart.js function

@@ -103,6 +103,12 @@
 
       // functions
       fetchData().then((data) => {
+        if (!data) {
+          console.error("No data available");
+          return;
+        }
+        console.log("Fetched data:", data);
+
         renderModelLineChart(data);
         renderModelBarChart(data);
         renderVersionLineChart(data);
